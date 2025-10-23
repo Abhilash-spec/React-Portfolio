@@ -1,5 +1,9 @@
-import { Col, Container, Row } from "react-bootstrap";
-
+import { Col, Container, Row, Tab, Nav } from "react-bootstrap";
+import { ProjectCard } from "./ProjectCard";
+import projImg1 from "../assets/img/project-img1.png";
+import projImg2 from "../assets/img/project-img2.png";
+import projImg3 from "../assets/img/project-img3.png";
+import colorSharp2 from "../assets/img/color-sharp2.png";
 export const Projects = () => {
     const projects = [
        {
@@ -42,7 +46,7 @@ export const Projects = () => {
                         <h2>Projects</h2>
                         <p>Lorem ipsum </p>
                         <Tab.Container id="projects-tab" defaultActiveKey="first">
-                        <Nav variant="pills" defaultActiveKey="/home">
+                        <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Tab one</Nav.Link>
                             </Nav.Item>
@@ -50,7 +54,7 @@ export const Projects = () => {
                                 <Nav.Link eventKey="second">Tab two</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="third" disabled>
+                                <Nav.Link eventKey="third">
                                     Tab three
                                 </Nav.Link>
                             </Nav.Item>
@@ -58,14 +62,23 @@ export const Projects = () => {
                         <Tab.Content>
                             <Tab.Pane eventKey="first">
                                 <Row>
-                                    
+                                    {
+                                        projects.map((project, index) => {
+                                            return (
+                                               <ProjectCard key={index}{...project}></ProjectCard>
+                                            )
+                                        })
+                                    }
                                 </Row>
                             </Tab.Pane>
+                            <Tab.Pane eventKey="second">Lorem ipsum</Tab.Pane>
+                            <Tab.Pane eventKey="third">Lorem ipsum</Tab.Pane>
                         </Tab.Content>
                         </Tab.Container>
                     </Col>
                 </Row>
             </Container>
+            <img className="background-image-right" src={colorSharp2}></img>
         </section>
     )
 }
